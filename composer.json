@@ -13,7 +13,7 @@
         "guzzlehttp/guzzle": ">=6.3",
         "php": "~7.2|~7.3|~7.4|~8.1|~8.2"
     },
-    "license": "OSL-3.0, AFL-3.0",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Eloom\\CorreiosSdk\\": "src/"
