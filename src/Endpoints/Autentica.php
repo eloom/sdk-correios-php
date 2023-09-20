@@ -1,9 +1,9 @@
 <?php
 
-namespace Correios\Endpoints;
+namespace Eloom\Correios\Endpoints;
 
-use Correios\Routers;
-use Correios\Response\AutenticaResponse;
+use Eloom\Correios\Routers;
+use Eloom\Correios\Response\AutenticaResponse;
 
 class Autentica extends Endpoint {
     

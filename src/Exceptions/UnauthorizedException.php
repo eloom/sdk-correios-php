@@ -1,6 +1,6 @@
 <?php
 
-namespace Correios\Exceptions;
+namespace Eloom\Correios\Exceptions;
 
 final class UnauthorizedException extends \Exception {
     /**

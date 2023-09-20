@@ -1,11 +1,11 @@
 <?php
 
-namespace Correios;
+namespace Eloom\Correios;
 
 use GuzzleHttp\Exception\ClientException;
-use Correios\Exceptions\CorreiosException;
-use Correios\Exceptions\InvalidJsonException;
-use Correios\Exceptions\UnauthorizedException;
+use Eloom\Correios\Exceptions\CorreiosException;
+use Eloom\Correios\Exceptions\InvalidJsonException;
+use Eloom\Correios\Exceptions\UnauthorizedException;
 
 class ResponseHandler {
 

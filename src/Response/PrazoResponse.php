@@ -1,6 +1,6 @@
 <?php
 
-namespace Correios\Response;
+namespace Eloom\Correios\Response;
 
 use stdClass;
 

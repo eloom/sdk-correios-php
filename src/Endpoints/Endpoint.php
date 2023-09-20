@@ -1,8 +1,8 @@
 <?php
 
-namespace Correios\Endpoints;
+namespace Eloom\Correios\Endpoints;
 
-use Correios\Client;
+use Eloom\Correios\Client;
 
 abstract class Endpoint {
     /**

@@ -1,13 +1,13 @@
 <?php
 
-namespace Correios;
+namespace Eloom\Correios;
 
-use Correios\Endpoints\Autentica;
-use Correios\Endpoints\Prazo;
-use Correios\Endpoints\Preco;
-use Correios\Endpoints\Rastro;
-use Correios\Exceptions\InvalidJsonException;
-use Correios\Exceptions\CorreiosException;
+use Eloom\Correios\Endpoints\Autentica;
+use Eloom\Correios\Endpoints\Prazo;
+use Eloom\Correios\Endpoints\Preco;
+use Eloom\Correios\Endpoints\Rastro;
+use Eloom\Correios\Exceptions\InvalidJsonException;
+use Eloom\Correios\Exceptions\CorreiosException;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
