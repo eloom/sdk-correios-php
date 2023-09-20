@@ -1,6 +1,6 @@
 {
-    "name": "eloom/correios-php-sdk",
-    "description": "Correios Rest SDK",
+    "name": "eloom/sdk-correios-php",
+    "description": "SDK Correios para PHP - Rest API",
     "type": "library",
     "homepage": "https://eloom.tech/",
     "keywords": [
