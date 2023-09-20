@@ -1,0 +1,33 @@
+{
+    "name": "eloom/correios-php-sdk",
+    "description": "Correios Rest SDK",
+    "type": "library",
+    "homepage": "https://eloom.tech/",
+    "keywords": [
+        "shipping",
+        "correios",
+        "correios rest",
+        "ecommerce"
+    ],
+    "require": {
+        "guzzlehttp/guzzle": ">=6.3",
+        "php": "~7.2|~7.3|~7.4|~8.1|~8.2"
+    },
+    "license": "OSL-3.0, AFL-3.0",
+    "autoload": {
+        "psr-4": {
+            "Eloom\\CorreiosSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rodrigo Sanders",
+            "email": "contato@eloom.com.br"
+        }
+    ],
+    "support": {
+        "email": "suporte@eloom.com.br"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
