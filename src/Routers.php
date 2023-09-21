@@ -1,6 +1,6 @@
 <?php
 
-namespace Eloom\Correios;
+namespace Eloom\SdkCorreios;
 
 class Routers {
 

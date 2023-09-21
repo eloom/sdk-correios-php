@@ -1,8 +1,8 @@
 <?php
 
-namespace Eloom\Correios\Endpoints;
+namespace Eloom\SdkCorreios\Endpoints;
 
-use Eloom\Correios\Routers;
+use Eloom\SdkCorreios\Routers;
 
 class Rastro extends Endpoint {
 

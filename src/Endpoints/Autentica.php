@@ -1,16 +1,16 @@
 <?php
 
-namespace Eloom\Correios\Endpoints;
+namespace Eloom\SdkCorreios\Endpoints;
 
-use Eloom\Correios\Routers;
-use Eloom\Correios\Response\AutenticaResponse;
+use Eloom\SdkCorreios\Routers;
+use Eloom\SdkCorreios\Response\AutenticaResponse;
 
 class Autentica extends Endpoint {
     
     /**
      * @param string $cartaoPostagem
      *
-     * @return Correios\Response\AutenticaResponse
+     * @return AutenticaResponse
      */
     public function cartaoPostagem(string $cartaoPostagem) {
         $response = $this->client->request(self::POST,

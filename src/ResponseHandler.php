@@ -1,18 +1,18 @@
 <?php
 
-namespace Eloom\Correios;
+namespace Eloom\SdkCorreios;
 
 use GuzzleHttp\Exception\ClientException;
-use Eloom\Correios\Exceptions\CorreiosException;
-use Eloom\Correios\Exceptions\InvalidJsonException;
-use Eloom\Correios\Exceptions\UnauthorizedException;
+use Eloom\SdkCorreios\Exceptions\CorreiosException;
+use Eloom\SdkCorreios\Exceptions\InvalidJsonException;
+use Eloom\SdkCorreios\Exceptions\UnauthorizedException;
 
 class ResponseHandler {
 
     /**
      * @param string $payload
      *
-     * @throws \Correios\Exceptions\InvalidJsonException
+     * @throws InvalidJsonException
      * @return \ArrayObject
      */
     public static function success($payload) {

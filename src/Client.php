@@ -1,13 +1,13 @@
 <?php
 
-namespace Eloom\Correios;
+namespace Eloom\SdkCorreios;
 
-use Eloom\Correios\Endpoints\Autentica;
-use Eloom\Correios\Endpoints\Prazo;
-use Eloom\Correios\Endpoints\Preco;
-use Eloom\Correios\Endpoints\Rastro;
-use Eloom\Correios\Exceptions\InvalidJsonException;
-use Eloom\Correios\Exceptions\CorreiosException;
+use Eloom\SdkCorreios\Endpoints\Autentica;
+use Eloom\SdkCorreios\Endpoints\Prazo;
+use Eloom\SdkCorreios\Endpoints\Preco;
+use Eloom\SdkCorreios\Endpoints\Rastro;
+use Eloom\SdkCorreios\Exceptions\InvalidJsonException;
+use Eloom\SdkCorreios\Exceptions\CorreiosException;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
@@ -44,22 +44,22 @@ class Client {
     private $token;
 
     /**
-     * @var \Correios\Endpoints\Prazo
+     * @var Prazo
      */
     private $prazo;
 
     /**
-     * @var \Correios\Endpoints\Preco
+     * @var Preco
      */
     private $preco;
 
     /**
-     * @var \Correios\Endpoints\Autentica
+     * @var Autentica
      */
     private $autentica;
 
     /**
-     * @var \Correios\Endpoints\Rastro
+     * @var Rastro
      */
     private $rastro;
 
@@ -94,7 +94,7 @@ class Client {
      * @param string $uri
      * @param array $options
      *
-     * @throws \Correios\Exceptions\CorreiosException
+     * @throws CorreiosException
      * @return \ArrayObject
      *
      * @psalm-suppress InvalidNullableReturnType
@@ -172,28 +172,28 @@ class Client {
     }
 
     /**
-     * @return \Correios\Endpoints\Autentica
+     * @return Autentica
      */
     public function autentica() {
         return $this->autentica;
     }
 
     /**
-     * @return \Correios\Endpoints\Prazo
+     * @return Prazo
      */
     public function prazo() {
         return $this->prazo;
     }
 
     /**
-     * @return \Correios\Endpoints\Preco
+     * @return Preco
      */
     public function preco() {
         return $this->preco;
     }
 
     /**
-     * @return \Correios\Endpoints\Rastro
+     * @return Rastro
      */
     public function rastro() {
         return $this->rastro;

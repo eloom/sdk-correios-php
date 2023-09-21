@@ -1,6 +1,6 @@
 <?php
 
-namespace Eloom\Correios\Response;
+namespace Eloom\SdkCorreios\Response;
 
 use stdClass;
 

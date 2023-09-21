@@ -1,6 +1,6 @@
 <?php
 
-namespace Eloom\Correios\Exceptions;
+namespace Eloom\SdkCorreios\Exceptions;
 
 final class CorreiosException extends \Exception {
     /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Eloom\Correios\Endpoints;
+namespace Eloom\SdkCorreios\Endpoints;
 
-use Eloom\Correios\Client;
+use Eloom\SdkCorreios\Client;
 
 abstract class Endpoint {
     /**
@@ -23,12 +23,12 @@ abstract class Endpoint {
     const DELETE = 'DELETE';
 
     /**
-     * @var \Correios\Client
+     * @var \SdkCorreios\Client
      */
     protected $client;
 
     /**
-     * @param \Correios\Client $client
+     * @param Client $client
      */
     public function __construct(Client $client) {
         $this->client = $client;
