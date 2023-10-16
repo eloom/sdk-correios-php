@@ -41,11 +41,9 @@ class ResponseHandler {
             return $guzzleException;
         }
 
-        if($response->getStatusCode() == 400 || $response->getStatusCode() == 401) {
+        if($response->getStatusCode() == 401) {
             return new UnauthorizedException('401 Unauthorized', date("d/m/Y"), '/v1/autentica/cartaopostagem');
         }
-
-        //echo 'Status Code ' . $response->getStatusCode() . "\n";
 
         $body = $response->getBody()->getContents();
 
@@ -55,6 +53,21 @@ class ResponseHandler {
             $jsonError = self::toJson($body);
         } catch (InvalidJsonException $invalidJson) {
             return $guzzleException;
+        }
+
+        if($response->getStatusCode() == 400) {
+            $error = null;
+
+            if(is_array($jsonError)) {
+                $error = $jsonError[0];
+            } else {
+                $error = $jsonError;
+            }
+            if(null != $error) {
+                if($error->txErro) {
+                    return new CorreiosException($error->txErro, date("d/m/Y"), '');
+                }
+            }
         }
 
         return new CorreiosException($jsonError->msgs, $jsonError->date, $jsonError->path);
