@@ -37,6 +37,8 @@ class ResponseHandler {
     private static function parseException(ClientException $guzzleException) {
         $response = $guzzleException->getResponse();
 
+				die(print_r($response, true));
+
         if (is_null($response)) {
             return $guzzleException;
         }
@@ -87,4 +89,3 @@ class ResponseHandler {
         return $result;
     }
 }
-?>
