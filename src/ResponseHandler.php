@@ -37,14 +37,22 @@ class ResponseHandler {
 	private static function parseException(ClientException $guzzleException) {
 		$response = $guzzleException->getResponse();
 
-		die(print_r($response, true));
-
 		if (is_null($response)) {
 			return $guzzleException;
 		}
 
 		if ($response->getStatusCode() == 401) {
 			return new UnauthorizedException('401 Unauthorized', date("d/m/Y"), '/v1/autentica/cartaopostagem');
+		}
+
+		$body = $response->getBody()->getContents();
+
+		$jsonError = null;
+
+		try {
+			$jsonError = self::toJson($body);
+		} catch (InvalidJsonException $invalidJson) {
+			return $guzzleException;
 		}
 
 		if ($response->getStatusCode() == 400) {
@@ -60,16 +68,6 @@ class ResponseHandler {
 					return new CorreiosException($error->txErro, date("d/m/Y"), '');
 				}
 			}
-		}
-
-		$body = $response->getBody()->getContents();
-
-		$jsonError = null;
-
-		try {
-			$jsonError = self::toJson($body);
-		} catch (InvalidJsonException $invalidJson) {
-			return $guzzleException;
 		}
 
 		return new CorreiosException($jsonError->msgs, $jsonError->date, $jsonError->path);

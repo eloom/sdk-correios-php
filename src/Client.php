@@ -100,7 +100,6 @@ class Client {
      * @psalm-suppress InvalidNullableReturnType
      */
     public function request($method, $uri, $options = []) {
-        $response = null;
         try {
             $response = $this->http->request($method, $uri, $options);
             
