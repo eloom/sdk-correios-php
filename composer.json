@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": "~8.3",
-    "guzzlehttp/guzzle": "~7.9"
+    "guzzlehttp/guzzle": ">=6.3"
   },
   "license": [
     "OSL-3.0",
