@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Eloom\SdkCorreios\Endpoints;
 
@@ -6,142 +7,141 @@ use Eloom\SdkCorreios\Routers;
 use stdClass;
 
 class Preco extends Endpoint {
-    
-    private $products = [];
 
-    private $cepOrigem;
+  private $products = [];
 
-    private $cepDestino;
+  private $cepOrigem;
 
-    private $psObjeto;
+  private $cepDestino;
 
-    private $tpObjeto;
+  private $psObjeto;
 
-    private $comprimento;
+  private $tpObjeto;
 
-    private $largura;
+  private $comprimento;
 
-    private $altura;
+  private $largura;
 
-    private $diametro;
+  private $altura;
 
-    private $vlDeclarado;
+  private $diametro;
 
-    private $dtEvento;
+  private $vlDeclarado;
 
-    private $servicosAdicionais = [];
+  private $dtEvento;
 
-    /**
-     *
-     */
-    public function nacional() {
-        $precos = [];
+  private $servicosAdicionais = [];
 
-        foreach($this->products as $index => $p) {
+  /**
+   *
+   */
+  public function nacional() {
+    $precos = [];
 
-            $preco = new stdClass();
-            $preco->coProduto = $p;
-            $preco->cepOrigem = $this->cepOrigem;
-            $preco->cepDestino = $this->cepDestino;
-            $preco->psObjeto = $this->psObjeto;
-            $preco->tpObjeto = $this->tpObjeto;
-            $preco->comprimento = $this->comprimento;
-            $preco->largura = $this->largura;
-            $preco->altura = $this->altura;
-            $preco->diametro = $this->diametro;
-            $preco->vlDeclarado = $this->vlDeclarado;
-            $preco->dtEvento = $this->dtEvento;
-            //$preco->servicosAdicionais = $this->servicosAdicionais;
-            $preco->nuRequisicao = ($index +1);
+    foreach ($this->products as $index => $p) {
 
-            $precos[] =  $preco;
-        }
+      $preco = new stdClass();
+      $preco->coProduto = $p;
+      $preco->cepOrigem = $this->cepOrigem;
+      $preco->cepDestino = $this->cepDestino;
+      $preco->psObjeto = $this->psObjeto;
+      $preco->tpObjeto = $this->tpObjeto;
+      $preco->comprimento = $this->comprimento;
+      $preco->largura = $this->largura;
+      $preco->altura = $this->altura;
+      $preco->diametro = $this->diametro;
+      $preco->vlDeclarado = $this->vlDeclarado;
+      $preco->dtEvento = $this->dtEvento;
+      //$preco->servicosAdicionais = $this->servicosAdicionais;
+      $preco->nuRequisicao = ($index + 1);
 
-        $body = new stdClass();
-        $body->idLote = '1';
-        $body->parametrosProduto = array_values($precos);
-
-        $response = $this->client->request(self::POST,
-            Routers::preco()->nacional(),
-            ['debug' => false,
-            'headers' => ['Authorization' => 'Bearer ' . $this->client->getToken()],
-            'json' => $body
-            ]
-        );
-        
-        return $response;
+      $precos[] = $preco;
     }
 
-    public function withProduct($product) {
-        array_push($this->products, $product);
+    $body = new stdClass();
+    $body->idLote = '1';
+    $body->parametrosProduto = array_values($precos);
 
-        return $this;
-    }
+    $response = $this->client->request(self::POST,
+      Routers::preco()->nacional(),
+      ['debug' => false,
+        'headers' => ['Authorization' => 'Bearer ' . $this->client->getToken()],
+        'json' => $body
+      ]
+    );
 
-	public function withCepOrigem($cepOrigem) {
-		$this->cepOrigem = $cepOrigem;
+    return $response;
+  }
 
-        return $this;
-	}
+  public function withProduct($product) {
+    array_push($this->products, $product);
 
-	public function withPsObjeto($psObjeto) {
-		$this->psObjeto = $psObjeto;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withCepOrigem($cepOrigem) {
+    $this->cepOrigem = $cepOrigem;
 
-	public function withTpObjeto($tpObjeto) {
-		$this->tpObjeto = $tpObjeto;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withPsObjeto($psObjeto) {
+    $this->psObjeto = $psObjeto;
 
-	public function withComprimento($comprimento) {
-		$this->comprimento = $comprimento;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withTpObjeto($tpObjeto) {
+    $this->tpObjeto = $tpObjeto;
 
-	public function withLargura($largura) {
-		$this->largura = $largura;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withComprimento($comprimento) {
+    $this->comprimento = $comprimento;
 
-	public function withAltura($altura) {
-		$this->altura = $altura;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withLargura($largura) {
+    $this->largura = $largura;
 
-	public function withVlDeclarado($vlDeclarado) {
-		$this->vlDeclarado = $vlDeclarado;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withAltura($altura) {
+    $this->altura = $altura;
 
-	public function withDtEvento($dtEvento) {
-		$this->dtEvento = $dtEvento;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withVlDeclarado($vlDeclarado) {
+    $this->vlDeclarado = $vlDeclarado;
 
-	public function withCepDestino($cepDestino) {
-		$this->cepDestino = $cepDestino;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withDtEvento($dtEvento) {
+    $this->dtEvento = $dtEvento;
 
-	public function withServicosAdicionais($servicosAdicionais) {
-		$this->servicosAdicionais = $servicosAdicionais;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withCepDestino($cepDestino) {
+    $this->cepDestino = $cepDestino;
 
-    public function withDiametro($diametro) {
-		$this->diametro = $diametro;
+    return $this;
+  }
 
-        return $this;
-	}
+  public function withServicosAdicionais($servicosAdicionais) {
+    $this->servicosAdicionais = $servicosAdicionais;
+
+    return $this;
+  }
+
+  public function withDiametro($diametro) {
+    $this->diametro = $diametro;
+
+    return $this;
+  }
 }
-?>

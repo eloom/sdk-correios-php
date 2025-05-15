@@ -1,69 +1,68 @@
 <?php
+declare(strict_types=1);
 
 namespace Eloom\SdkCorreios\Endpoints;
 
 use Eloom\SdkCorreios\Routers;
-
 use stdClass;
 
 class Prazo extends Endpoint {
 
-    private $products = [];
+  private $products = [];
 
-    private $cepOrigem;
+  private $cepOrigem;
 
-    private $cepDestino;
-    
-    /**
-     *
-     */
-    public function nacional() {
-        $prazos = [];
-        $dtEvento = date("d/m/Y");
+  private $cepDestino;
 
-        foreach($this->products as $index => $p) {
+  /**
+   *
+   */
+  public function nacional() {
+    $prazos = [];
+    $dtEvento = date("d/m/Y");
 
-            $prazo = new stdClass();
-            $prazo->coProduto = $p;
-            $prazo->cepOrigem = $this->cepOrigem;
-            $prazo->cepDestino = $this->cepDestino;
-            $prazo->nuRequisicao = ($index +1);
-            $prazo->dtEvento = $dtEvento;
+    foreach ($this->products as $index => $p) {
 
-            $prazos[] =  $prazo;
-        }
+      $prazo = new stdClass();
+      $prazo->coProduto = $p;
+      $prazo->cepOrigem = $this->cepOrigem;
+      $prazo->cepDestino = $this->cepDestino;
+      $prazo->nuRequisicao = ($index + 1);
+      $prazo->dtEvento = $dtEvento;
 
-        $body = new stdClass();
-        $body->idLote = '1';
-        $body->parametrosPrazo = array_values($prazos);
-
-        $response = $this->client->request(self::POST,
-            Routers::prazo()->nacional(),
-            ['debug' => false,
-            'headers' => ['Authorization' => 'Bearer ' . $this->client->getToken()],
-            'json' => $body
-            ]
-        );
-        
-        return $response;
+      $prazos[] = $prazo;
     }
 
-    public function withProduct($product) {
-        array_push($this->products, $product);
+    $body = new stdClass();
+    $body->idLote = '1';
+    $body->parametrosPrazo = array_values($prazos);
 
-        return $this;
-    }
+    $response = $this->client->request(self::POST,
+      Routers::prazo()->nacional(),
+      ['debug' => false,
+        'headers' => ['Authorization' => 'Bearer ' . $this->client->getToken()],
+        'json' => $body
+      ]
+    );
 
-    public function withCepOrigem($cepOrigem) {
-        $this->cepOrigem = $cepOrigem;
+    return $response;
+  }
 
-        return $this;
-    }
+  public function withProduct($product) {
+    array_push($this->products, $product);
 
-    public function withCepDestino($cepDestino) {
-        $this->cepDestino = $cepDestino;
+    return $this;
+  }
 
-        return $this;
-    }
+  public function withCepOrigem($cepOrigem) {
+    $this->cepOrigem = $cepOrigem;
+
+    return $this;
+  }
+
+  public function withCepDestino($cepDestino) {
+    $this->cepDestino = $cepDestino;
+
+    return $this;
+  }
 }
-?>
